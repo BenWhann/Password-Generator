@@ -18,17 +18,17 @@ function askPrompts() {
   }
 
 
-  var checkCharacters = getCharacters();
-  console.log(checkCharacters);
-  if (!checkCharacters) {
+  //var checkCharacters = getCharacters();
+  //console.log(checkCharacters);
+  //if (!checkCharacters) {
 
-    alert("Please include at least one character option so that your password can be generated.");
+    //alert("Please include at least one character option so that your password can be generated.");
 
-  } else {
+  //} else {
 
-    console.log(checkCharacters);
+    //console.log(checkCharacters);
 
-  }
+  //}
   
   return "fuck you";
 }
@@ -41,17 +41,27 @@ function getLength() {
 
 }
 
-function getCharacters() {
-
   var lowercase = confirm("Include lowercase characters? Click OK if yes, click Cancel if no.");
   var uppercase = confirm("Include uppercase characters? Click OK if yes, click Cancel if no.");
   var numbers = confirm("Include numbers? Click OK if yes, click Cancel if no.");
   var specChar = confirm("Include special characters? Click OK if yes, click Cancel if no.");
   var characters = [lowercase, uppercase, numbers, specChar];
 
-  return characters;
+function getCharacters() {
+
+  if (lowercase == false && uppercase == false && numbers == false && specChar == false) {
+
+    alert("Please include at least one character option so that your password can be generated.");
+
+  } else {
+    console.log(characters);
+  }
+
+  return;
 
 }
+
+getCharacters();
 
 
 generateBtn.addEventListener("click", function () {
