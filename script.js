@@ -25,32 +25,20 @@ function askPrompts() {
     
   }
   
-  return "fuck you";
-}
-
-function getLength() {
-
-  var charLength = prompt("How many characters long would you like your password to be?");
-
-  return charLength;
-
-}
-
-function getCharacters() {
+  var confirmLowercase = confirm("Include lowercase characters? Click OK if yes, click Cancel if no.");
+  var confirmUppercase = confirm("Include uppercase characters? Click OK if yes, click Cancel if no.");
+  var confirmNumbers = confirm("Include numbers? Click OK if yes, click Cancel if no.");
+  var confirmSpecChar = confirm("Include special characters? Click OK if yes, click Cancel if no.");
 
   var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   var specChar = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", ";", ":", "'", "{", "}", "[", "]", "|", "<", ">", ",", "."];
 
-  var confirmLowercase = confirm("Include lowercase characters? Click OK if yes, click Cancel if no.");
-  var confirmUppercase = confirm("Include uppercase characters? Click OK if yes, click Cancel if no.");
-  var confirmNumbers = confirm("Include numbers? Click OK if yes, click Cancel if no.");
-  var confirmSpecChar = confirm("Include special characters? Click OK if yes, click Cancel if no.");
-
   if (confirmLowercase == false && confirmUppercase == false && confirmNumbers == false && confirmSpecChar == false) {
 
     alert("Please include at least one character option so that your password can be generated.");
+    return askPrompts;
 
   } else if (confirmLowercase == true && confirmUppercase == false && confirmNumbers == false && confirmSpecChar == false) {
     
@@ -119,17 +107,21 @@ function getCharacters() {
   //var randomCharacter = passCharacters[Math.floor(Math.random() * passCharacters.length)];
   //console.log(randomCharacter);
 
-  for (i = 0; i < passCharacters.length; i++); {
-      var randomCharacter = passCharacters[Math.floor(Math.random() * passCharacters.length)];
+  for (i = 0; i < checkLength.length; i++); {
+      var randomCharacter = passCharacters[Math.floor(Math.random() * checkLength.length)];
       console.log(randomCharacter);
   }
 
-  return;
+}
+
+function getLength() {
+
+  var charLength = prompt("How many characters long would you like your password to be?");
+
+  return charLength;
 
 }
 
-askPrompts();
-getCharacters();
 
 
 // Get references to the #generate element
