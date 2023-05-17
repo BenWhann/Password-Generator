@@ -10,6 +10,15 @@ generateBtn.addEventListener("click", function () {
 })
 
 
+function getLength() {
+
+    var charLength = prompt("How many characters long would you like your password to be?");
+  
+    return charLength;
+  
+  }
+
+
 function askPrompts() {
   
   var checkLength = getLength();
@@ -30,10 +39,10 @@ function askPrompts() {
   var confirmNumbers = confirm("Include numbers? Click OK if yes, click Cancel if no.");
   var confirmSpecChar = confirm("Include special characters? Click OK if yes, click Cancel if no.");
 
-  var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-  var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-  var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  var specChar = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", ";", ":", "'", "{", "}", "[", "]", "|", "<", ">", ",", "."];
+  var lowercase = "abcdefghijklmnopqrstuvwxyz".split('');
+  var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+  var numbers = "0123456789".split('');                           // issue
+  var specChar = "`~!@#$%^&*()_-+=;:'{}[]|<>,.".split('');
 
   if (confirmLowercase == false && confirmUppercase == false && confirmNumbers == false && confirmSpecChar == false) {
 
@@ -58,79 +67,69 @@ function askPrompts() {
 
   } else if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == false && confirmSpecChar == false) {
     
-      var passCharacters = lowercase.concat(uppercase);
+      var passCharacters = lowercase + uppercase;
 
   } else if (confirmLowercase == true && confirmUppercase == false && confirmNumbers == true && confirmSpecChar == false) {
     
-      var passCharacters = lowercase.concat(numbers);
+      var passCharacters = lowercase + numbers;
 
   } else if (confirmLowercase == true && confirmUppercase == false && confirmNumbers == false && confirmSpecChar == true) {
     
-      var passCharacters = lowercase.concat(specChar);
+      var passCharacters = lowercase + specChar;
 
   } else if (confirmLowercase == false && confirmUppercase == true && confirmNumbers == true && confirmSpecChar == false) {
     
-      var passCharacters = uppercase.concat(numbers);
+      var passCharacters = uppercase + numbers;
 
   } else if (confirmLowercase == false && confirmUppercase == true && confirmNumbers == false && confirmSpecChar == true) {
     
-      var passCharacters = uppercase.concat(specChar);
+      var passCharacters = uppercase + specChar;
 
   } else if (confirmLowercase == false && confirmUppercase == false && confirmNumbers == true && confirmSpecChar == true) {
     
-      var passCharacters = numbers.concat(specChar);
+      var passCharacters = numbers + specChar;
 
   } else if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == true && confirmSpecChar == false) {
     
-      var passCharacters = lowercase.concat(uppercase, numbers);
+      var passCharacters = lowercase + uppercase + numbers;
 
   } else if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == false && confirmSpecChar == true) {
     
-      var passCharacters = lowercase.concat(uppercase, specChar);
+      var passCharacters = lowercase + uppercase + specChar;
 
   } else if (confirmLowercase == true && confirmUppercase == false && confirmNumbers == true && confirmSpecChar == true) {
     
-      var passCharacters = lowercase.concat(specChar, numbers);
+      var passCharacters = lowercase + numbers + specChar;
 
   } else if (confirmLowercase == false && confirmUppercase == true && confirmNumbers == true && confirmSpecChar == true) {
     
-      var passCharacters = specChar.concat(uppercase, numbers);
+      var passCharacters = uppercase + numbers + specChar;
 
   } else if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == true && confirmSpecChar == true) {
 
-      var passCharacters = lowercase.concat(uppercase, numbers, specChar);
+      var passCharacters = lowercase + uppercase + numbers + specChar;
 
   }
 
   console.log(passCharacters);
 
-  //var randomCharacter = passCharacters[Math.floor(Math.random() * passCharacters.length)];
-  //console.log(randomCharacter);
+  var randomCharacter = "";
 
   for (i = 0; i < checkLength.length; i++); {
-      var randomCharacter = passCharacters[Math.floor(Math.random() * checkLength.length)];
-      console.log(randomCharacter);
-  }
+    randomCharacter += passCharacters[Math.floor(Math.random() * checkLength.length)];   // issue
+  } 
+  
+  return randomCharacter;
 
 }
-
-function getLength() {
-
-  var charLength = prompt("How many characters long would you like your password to be?");
-
-  return charLength;
-
-}
-
-
+  
 
 // Get references to the #generate element
 
 // Write password to the #password input
-// function writePassword() {
-//  var password = generatePassword();
-
-// }
+//function writePassword() {
+    //var password = generatePassword();
+    //}
 
 // Add event listener to generate button
 //generateBtn.addEventListener("click", writePassword);
