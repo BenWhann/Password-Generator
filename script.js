@@ -47,7 +47,7 @@ function askPrompts() {
   if (confirmLowercase == false && confirmUppercase == false && confirmNumbers == false && confirmSpecChar == false) {
 
     alert("Please include at least one character option so that your password can be generated.");
-    return askPrompts;
+    return askPrompts();
 
   } else if (confirmLowercase == true && confirmUppercase == false && confirmNumbers == false && confirmSpecChar == false) {
     
