@@ -41,7 +41,7 @@ function askPrompts() {
 
   var lowercase = "abcdefghijklmnopqrstuvwxyz".split('');
   var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
-  var numbers = "0123456789".split('');                           // issue
+  var numbers = "0123456789".split('');                         
   var specChar = "`~!@#$%^&*()_-+=;:'{}[]|<>,.".split('');
 
   if (confirmLowercase == false && confirmUppercase == false && confirmNumbers == false && confirmSpecChar == false) {
@@ -67,69 +67,61 @@ function askPrompts() {
 
   } else if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == false && confirmSpecChar == false) {
     
-      var passCharacters = lowercase + uppercase;
+      var passCharacters = (lowercase + uppercase).replace(/,/g, "");
 
   } else if (confirmLowercase == true && confirmUppercase == false && confirmNumbers == true && confirmSpecChar == false) {
     
-      var passCharacters = lowercase + numbers;
+      var passCharacters = (lowercase + numbers).replace(/,/g, "");
 
   } else if (confirmLowercase == true && confirmUppercase == false && confirmNumbers == false && confirmSpecChar == true) {
     
-      var passCharacters = lowercase + specChar;
+      var passCharacters = (lowercase + specChar).replace(/,/g, "");
 
   } else if (confirmLowercase == false && confirmUppercase == true && confirmNumbers == true && confirmSpecChar == false) {
     
-      var passCharacters = uppercase + numbers;
+      var passCharacters = (uppercase + numbers).replace(/,/g, "");
 
   } else if (confirmLowercase == false && confirmUppercase == true && confirmNumbers == false && confirmSpecChar == true) {
     
-      var passCharacters = uppercase + specChar;
+      var passCharacters = (uppercase + specChar).replace(/,/g, "");
 
   } else if (confirmLowercase == false && confirmUppercase == false && confirmNumbers == true && confirmSpecChar == true) {
     
-      var passCharacters = numbers + specChar;
+      var passCharacters = (numbers + specChar).replace(/,/g, "");
 
   } else if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == true && confirmSpecChar == false) {
     
-      var passCharacters = lowercase + uppercase + numbers;
+      var passCharacters = (lowercase + uppercase + numbers).replace(/,/g, "");
 
   } else if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == false && confirmSpecChar == true) {
     
-      var passCharacters = lowercase + uppercase + specChar;
+      var passCharacters = (lowercase + uppercase + specChar).replace(/,/g, "");
 
   } else if (confirmLowercase == true && confirmUppercase == false && confirmNumbers == true && confirmSpecChar == true) {
     
-      var passCharacters = lowercase + numbers + specChar;
+      var passCharacters = (lowercase + numbers + specChar).replace(/,/g, "");
 
   } else if (confirmLowercase == false && confirmUppercase == true && confirmNumbers == true && confirmSpecChar == true) {
     
-      var passCharacters = uppercase + numbers + specChar;
+      var passCharacters = (uppercase + numbers + specChar).replace(/,/g, "");
 
   } else if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == true && confirmSpecChar == true) {
 
-      var passCharacters = lowercase + uppercase + numbers + specChar;
+      var passCharacters = (lowercase + uppercase + numbers + specChar).replace(/,/g, "");
 
-  }
+  };
 
   console.log(passCharacters);
-
+ 
   var randomCharacter = "";
 
-  for (i = 0; i < checkLength.length; i++); {
-    randomCharacter += passCharacters[Math.floor(Math.random() * checkLength.length)];   // issue
-  } 
-  
+  for (i = 0; i < checkLength; i++) {
+    randomCharacter += passCharacters[Math.floor(Math.random() * passCharacters.length)];
+  }
+
+  console.log(checkLength);
+  console.log(randomCharacter);
   return randomCharacter;
 
 }
   
-
-// Get references to the #generate element
-
-// Write password to the #password input
-//function writePassword() {
-    //var password = generatePassword();
-    //}
-
-// Add event listener to generate button
-//generateBtn.addEventListener("click", writePassword);
